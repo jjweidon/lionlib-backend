@@ -39,5 +39,5 @@ out/
 ### properties ###
 **/application.yaml
 
-# macOS system files
+### macOS system files ###
 *.DS_Store
