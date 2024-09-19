@@ -1,6 +1,6 @@
 package com.likelion.lionlib.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,8 +13,8 @@ public class Member extends BaseTime {
     @Column(name = "member_id")
     private Long id;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "member", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-    @JsonManagedReference
     private Profile profile;
 
     private String email;

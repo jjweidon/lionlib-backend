@@ -1,6 +1,6 @@
 package com.likelion.lionlib.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,8 +14,8 @@ public class Profile extends BaseTime {
     @Column(name = "profile_id")
     private Long id;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
