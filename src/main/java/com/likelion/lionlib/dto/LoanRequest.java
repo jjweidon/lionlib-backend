@@ -5,12 +5,10 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.likelion.lionlib.domain.LoanStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.time.LocalDate;
 
 @Getter
-@ToString
 @NoArgsConstructor
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class LoanRequest {
