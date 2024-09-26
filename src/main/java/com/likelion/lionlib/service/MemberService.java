@@ -2,9 +2,9 @@ package com.likelion.lionlib.service;
 
 import com.likelion.lionlib.domain.Member;
 import com.likelion.lionlib.domain.Profile;
+import com.likelion.lionlib.domain.Role;
 import com.likelion.lionlib.dto.MemberResponse;
 import com.likelion.lionlib.dto.ProfileRequest;
-import com.likelion.lionlib.dto.SignupRequest;
 import com.likelion.lionlib.repository.MemberRepository;
 import com.likelion.lionlib.repository.ProfileRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,17 +18,15 @@ public class MemberService {
 
     private final GlobalService globalService;
 
-    // 회원가입 처리
-    public void joinProcess(SignupRequest signupRequest) {
-        if (memberRepository.findByEmail(signupRequest.getEmail()).isPresent()) {
-            throw new RuntimeException("Email already in use");
-        }
-
+    // Member 생성
+    public void createMember(String email, String encodedPassword) {
         Member newMember = Member.builder()
-                .email(signupRequest.getEmail())
-                .password(signupRequest.getPassword()) // 패스워드는 암호화 해야 함
+                .email(email)
+                .password(encodedPassword)
+                .role(Role.BABYLION) // 역할 설정
                 .build();
         memberRepository.save(newMember);
+
         Profile profile = Profile.builder()
                 .member(newMember)
                 .build();

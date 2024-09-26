@@ -8,9 +8,9 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum Role {
-    BABYLION("아기사자"),
-    MANAGER("운영진"),
-    CAPTAIN("대표");
+    BABYLION("ROLE_BABYLION"),
+    MANAGER("ROLE_MANAGER"),
+    CAPTAIN("ROLE_CAPTAIN");
 
     private final String value;
 

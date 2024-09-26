@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Builder
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class LoanResponse {
+    private Long loanId;
     private Long memberId;
     private Long bookId;
     private LocalDate loanDate;
@@ -21,6 +22,7 @@ public class LoanResponse {
 
     public static LoanResponse fromEntity(Loan loan) {
         return LoanResponse.builder()
+                .loanId(loan.getId())
                 .memberId(loan.getMember().getId())
                 .bookId(loan.getBook().getId())
                 .loanDate(loan.getLoanDate())
